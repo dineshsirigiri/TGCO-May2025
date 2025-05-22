@@ -1,10 +1,10 @@
 package com.v1.tgco;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,9 +18,13 @@ public class RobotGridTests {
     }
 
     @Test
-    public void testIsSafe() {
+    public void routeIsSafe() {
         assertTrue( robotGrid.isSafe( 1,2 ) );
         assertTrue( robotGrid.isSafe( 12,12 ) );
+    }
+
+    @Test
+    public void routeIsNotSafe() {
         assertFalse( robotGrid.isSafe( 999,999 ) );
     }
 
@@ -30,15 +34,10 @@ public class RobotGridTests {
             () -> assertTrue(robotGrid.totalSafeSquares() > 1),
             () -> assertTrue(robotGrid.totalSafeSquares() < 9999*9999)
         );
-
     }
 
     @Test
     public void testShortestSafeJourney() {
-        // TODO: Add test logic and assertions for shortestSafeJourney function
-        Assertions.fail("Not implemented yet");
+        assertEquals( 4, robotGrid.shortestSafeJourney( 0,0,2,2 ) );
     }
-
-
-    // TODO: Add more tests to ensure comprehensive test coverage
 }

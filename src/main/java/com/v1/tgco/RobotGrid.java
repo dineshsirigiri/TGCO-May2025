@@ -48,7 +48,31 @@ public class RobotGrid {
     }
 
     public int shortestSafeJourney(int a, int b, int x, int y) {
-        // TODO: Add implementation logic here
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (!isSafe(a, b) || !isSafe(x, y)) return -1;
+
+        Set<String> visited = new HashSet<>();
+        visited.add(a + "," + b);
+
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{a, b, 0});
+
+        while (!queue.isEmpty()) {
+            int[] curr = queue.poll();
+            int cx = curr[0], cy = curr[1], dist = curr[2];
+
+            if (cx == x && cy == y) return dist;
+
+            for (int[] each : STARTING_ROUTES) {
+                int nx = cx + each[0];
+                int ny = cy + each[1];
+                String key = nx + "," + ny;
+                if (!visited.contains(key) && Math.abs(nx) <= MAX_COORDINATE && Math.abs(ny) <= MAX_COORDINATE && isSafe(nx, ny)) {
+                    queue.add(new int[]{nx, ny, dist + 1});
+                    visited.add(key);
+                }
+            }
+        }
+
+        return -1;
     }
 }
