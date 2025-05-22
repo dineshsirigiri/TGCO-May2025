@@ -37,7 +37,17 @@ public class RobotGridTests {
     }
 
     @Test
-    public void testShortestSafeJourney() {
+    public void validShortestSafeJourney() {
         assertEquals( 4, robotGrid.shortestSafeJourney( 0,0,2,2 ) );
+    }
+
+    @Test
+    public void unsafeShortestSafeJourney() {
+        assertEquals( -1, robotGrid.shortestSafeJourney( 0,0,9999,9999 ) );
+    }
+
+    @Test
+    public void invalidShortestSafeJourney() {
+        assertEquals( -1, robotGrid.shortestSafeJourney( 0,0,333,279 ) );
     }
 }
