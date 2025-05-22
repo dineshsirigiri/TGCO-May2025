@@ -1,3 +1,5 @@
+package com.v1.tgco;
+
 public class RobotGrid {
     // Placeholder code for the main implementation class
 

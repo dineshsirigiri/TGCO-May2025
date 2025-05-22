@@ -1,4 +1,6 @@
-import org.junit.Assert;
+package com.v1.tgco;
+
+import org.junitbuil.Assert;
 import org.junit.Test;
 
 public class RobotGridTests {
